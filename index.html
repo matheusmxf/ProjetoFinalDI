@@ -9,44 +9,50 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">NutriPro</div>
-        <a href="#contato" class="btn primary">Agendar</a>
+        <div class="logo"> NutriPro</div>
+        <div class="nav-actions">
+            <button id="btn-theme" class="btn" title="Mudar Tema"></button>
+            <button id="btn-login-modal" class="btn primary">Login</button>
+        </div>
     </nav>
 
-    <header class="hero">
-        <h1>Transforme seu Corpo e Mente</h1>
-        <p>Consultorias 100% Personalizadas</p>
+    <header class="hero-carousel">
+        <div class="slide active"><h1>Transforme seu Corpo e Mente</h1><p>Consultorias 100% Personalizadas</p></div>
+        <div class="slide"><h1>Nutrição com Ciência</h1><p>Sem dietas malucas, resultados reais.</p></div>
+        <button id="c-prev" class="c-btn">❮</button>
+        <button id="c-next" class="c-btn">❯</button>
     </header>
 
     <main class="container">
         <section class="section">
             <h2 class="section-title">O que oferecemos</h2>
             <div class="grid-cards">
-                <div class="card">
+                <div class="card explain">
                     <h3>Reeducação Alimentar</h3>
-                    <p>Aprenda a comer de tudo, na medida certa.</p>
+                    <p>Aprenda a comer de tudo, na medida certa, sem sofrimento e com muita saúde.</p>
                 </div>
-                <div class="card">
+                <div class="card explain">
                     <h3>Nutrição Esportiva</h3>
-                    <p>Planos focados em hipertrofia e rendimento.</p>
+                    <p>Planos focados em hipertrofia, rendimento e recuperação muscular.</p>
                 </div>
                 <div class="card">
+                    <div class="card-img"></div>
                     <h3>Receitas Saudáveis</h3>
                     <p>Acesso exclusivo ao nosso e-book.</p>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="section">
+        <section class="section contact-section">
             <h2 class="section-title">Fale Conosco</h2>
             <form id="contact-form" class="modern-form">
                 <div class="input-group">
-                    <label>Nome Completo</label>
                     <input type="text" required>
+                    <label>Nome Completo</label>
                 </div>
                 <div class="input-group">
-                    <label>E-mail</label>
                     <input type="email" required>
+                    <label>E-mail Válido</label>
                 </div>
                 <button type="submit" class="btn primary w-100">Agendar Avaliação</button>
             </form>
@@ -54,8 +60,27 @@
         </section>
     </main>
 
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Bem-vindo de volta!</h2>
+            <form id="login-form" class="modern-form">
+                <div class="input-group">
+                    <input id="l-email" type="email" required>
+                    <label>E-mail</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" required minlength="6">
+                    <label>Senha</label>
+                </div>
+                <button type="submit" class="btn primary w-100">Acessar Painel</button>
+            </form>
+            <p id="login-feedback" class="feedback-msg"></p>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 NutriPro.</p>
+        <p>&copy; 2026 NutriPro. Layout acessível.</p>
     </footer>
 
     <script src="script.js"></script>
