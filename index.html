@@ -3,85 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriPro | Saúde</title>
+    <title>NutriPro | Saúde Avançada</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo"> NutriPro</div>
-        <div class="nav-actions">
-            <button id="btn-theme" class="btn" title="Mudar Tema"></button>
-            <button id="btn-login-modal" class="btn primary">Login</button>
+    <section id="auth-view" class="auth-page">
+    <div class="auth-card">
+        <div class="logo">NutriPro</div>
+        <p class="subtitle">Acesse sua conta para continuar</p>
+
+        <div class="tabs" role="tablist">
+            <button class="tab active" data-tab="login" role="tab" aria-selected="true">Entrar</button>
+            <button class="tab" data-tab="register" role="tab" aria-selected="false">Criar conta</button>
         </div>
-    </nav>
 
-    <header class="hero-carousel">
-        <div class="slide active"><h1>Transforme seu Corpo e Mente</h1><p>Consultorias 100% Personalizadas</p></div>
-        <div class="slide"><h1>Nutrição com Ciência</h1><p>Sem dietas malucas, resultados reais.</p></div>
-        <button id="c-prev" class="c-btn">❮</button>
-        <button id="c-next" class="c-btn">❯</button>
-    </header>
-
-    <main class="container">
-        <section class="section">
-            <h2 class="section-title">O que oferecemos</h2>
-            <div class="grid-cards">
-                <div class="card explain">
-                    <h3>Reeducação Alimentar</h3>
-                    <p>Aprenda a comer de tudo, na medida certa, sem sofrimento e com muita saúde.</p>
-                </div>
-                <div class="card explain">
-                    <h3>Nutrição Esportiva</h3>
-                    <p>Planos focados em hipertrofia, rendimento e recuperação muscular.</p>
-                </div>
-                <div class="card">
-                    <div class="card-img"></div>
-                    <h3>Receitas Saudáveis</h3>
-                    <p>Acesso exclusivo ao nosso e-book.</p>
-                </div>
+        <form id="login-form" class="modern-form">
+            <div class="input-group">
+                <input id="l-email" type="email" required>
+                <label for="l-email">E-mail</label>
             </div>
-        </section>
+            <div class="input-group">
+                <input id="l-pass" type="password" required>
+                <label for="l-pass">Senha</label>
+                <button type="button" class="toggle-pass" data-target="l-pass" aria-label="Mostrar senha">👁️</button>
+            </div>
+            <label class="remember"><input id="l-remember" type="checkbox"> Manter conectado</label>
+            <button type="submit" class="btn primary w-100">Acessar Painel</button>
+        </form>
 
-        <section class="section contact-section">
-            <h2 class="section-title">Fale Conosco</h2>
-            <form id="contact-form" class="modern-form">
-                <div class="input-group">
-                    <input type="text" required>
-                    <label>Nome Completo</label>
-                </div>
-                <div class="input-group">
-                    <input type="email" required>
-                    <label>E-mail Válido</label>
-                </div>
-                <button type="submit" class="btn primary w-100">Agendar Avaliação</button>
-            </form>
-            <p id="contact-feedback" class="feedback-msg"></p>
-        </section>
-    </main>
+        <form id="register-form" class="modern-form" hidden>
+            <div class="input-group">
+                <input id="r-name" type="text" required minlength="3">
+                <label for="r-name">Nome Completo</label>
+            </div>
+            <div class="input-group">
+                <input id="r-email" type="email" required>
+                <label for="r-email">E-mail</label>
+            </div>
+            <div class="input-group">
+                <input id="r-pass" type="password" required minlength="6">
+                <label for="r-pass">Senha (mín. 6 caracteres)</label>
+                <button type="button" class="toggle-pass" data-target="r-pass" aria-label="Mostrar senha">👁</button>
+            </div>
+            <div class="input-group">
+                <input id="r-pass2" type="password" required minlength="6">
+                <label for="r-pass2">Confirmar Senha</label>
+            </div>
+            <button type="submit" class="btn primary w-100">Criar Conta</button>
+        </form>
 
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Bem-vindo de volta!</h2>
-            <form id="login-form" class="modern-form">
-                <div class="input-group">
-                    <input id="l-email" type="email" required>
-                    <label>E-mail</label>
-                </div>
-                <div class="input-group">
-                    <input type="password" required minlength="6">
-                    <label>Senha</label>
-                </div>
-                <button type="submit" class="btn primary w-100">Acessar Painel</button>
-            </form>
-            <p id="login-feedback" class="feedback-msg"></p>
-        </div>
+        <p id="auth-msg" class="error-msg" role="alert"></p>
+        <p class="auth-note">Modo demonstração: as contas ficam salvas apenas neste navegador.</p>
     </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 NutriPro. Layout acessível.</p>
-    </footer>
+    <div id="app-view" hidden>
+        <a href="#main" class="skip-link">Ir para o conteúdo</a>
+
+        <nav class="navbar">
+            <div class="logo">NutriPro</div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Pesquisar saúde..." aria-label="Pesquisar nos serviços">
+            </div>
+            <div class="nav-actions">
+                <button id="btn-theme" class="btn" title="Mudar Tema" aria-label="Mudar tema">🌓</button>
+                <button id="btn-a-plus" class="btn" aria-label="Aumentar fonte">A+</button>
+                <button id="btn-a-minus" class="btn" aria-label="Diminuir fonte">A-</button>
+                <span id="user-name" class="user-name"></span>
+                <button id="btn-logout" class="btn primary">Sair</button>
+            </div>
+        </nav>
+
+        <header class="hero-carousel" aria-label="Destaques">
+            <div class="slide active"><h1>Transforme seu Corpo e Mente</h1><p>Consultorias 100% Personalizadas</p></div>
+            <div class="slide"><h1>Nutrição com Ciência</h1><p>Sem dietas malucas, resultados reais.</p></div>
+            <div class="slide"><h1>Acompanhamento de Perto</h1><p>Ajustes semanais no seu plano, online ou presencial.</p></div>
+            <button id="c-prev" class="c-btn" aria-label="Slide anterior">❮</button>
+            <button id="c-next" class="c-btn" aria-label="Próximo slide">❯</button>
+            <div id="c-dots" class="dots"></div>
+        </header>
+
+        <main id="main" class="container">
+            <section class="section stats" aria-label="Resultados">
+                <div><strong>+<span class="counter" data-target="2500">0</span></strong><span>pacientes atendidos</span></div>
+                <div><strong><span class="counter" data-target="12">0</span></strong><span>anos de experiência</span></div>
+                <div><strong><span class="counter" data-target="98">0</span>%</strong><span>de satisfação</span></div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">O que oferecemos</h2>
+                <div id="cards" class="grid-cards">
+                    <div class="card explain">
+                        <h3>Reeducação Alimentar</h3>
+                        <p>Aprenda a comer de tudo, na medida certa, sem sofrimento e com muita saúde.</p>
+                    </div>
+                    <div class="card explain">
+                        <h3>Nutrição Esportiva</h3>
+                        <p>Planos focados em hipertrofia, rendimento e recuperação muscular.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">🥗</div>
+                        <h3>Receitas Saudáveis</h3>
+                        <p>Acesso exclusivo ao nosso e-book com receitas práticas para a semana.</p>
+                    </div>
+                    <div class="card explain">
+                        <h3>⚖️ Emagrecimento Saudável</h3>
+                        <p>Perda de peso gradual, sem efeito sanfona e com acompanhamento real.</p>
+                    </div>
+                    <div class="card explain">
+                        <h3>🩺 Nutrição Clínica</h3>
+                        <p>Cuidado alimentar para diabetes, colesterol, hipertensão e outras condições.</p>
+                    </div>
+                    <div class="card explain">
+                        <h3>💬 Acompanhamento Online</h3>
+                        <p>Consultas por vídeo e suporte direto para tirar dúvidas no dia a dia.</p>
+                    </div>
+                </div>
+                <p id="no-results" class="feedback-msg">Nenhum serviço encontrado. Tente outra palavra, como "dieta" ou "treino".</p>
+            </section>
+
+            <section class="section contact-section">
+                <h2 class="section-title">Fale Conosco</h2>
+                <form id="contact-form" class="modern-form">
+                    <div class="input-group">
+                        <input id="c-name" type="text" required minlength="3">
+                        <label for="c-name">Nome Completo</label>
+                    </div>
+                    <div class="input-group">
+                        <input id="c-email" type="email" required>
+                        <label for="c-email">E-mail Válido</label>
+                    </div>
+                    <button type="submit" class="btn primary w-100">Agendar Avaliação</button>
+                </form>
+            </section>
+        </main>
+
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        <button id="to-top" class="btn primary to-top" aria-label="Voltar ao topo">↑</button>
+
+        <footer>
+            <p>&copy; 2026 NutriPro. Layout acessível, com tema, fonte ajustável e navegação por teclado.</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
