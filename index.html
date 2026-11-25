@@ -75,67 +75,158 @@
             </div>
         </nav>
 
-        <header class="hero-carousel" aria-label="Destaques">
-            <div class="slide active"><h1>Transforme seu Corpo e Mente</h1><p>Consultorias 100% Personalizadas</p></div>
-            <div class="slide"><h1>Nutrição com Ciência</h1><p>Sem dietas malucas, resultados reais.</p></div>
-            <div class="slide"><h1>Acompanhamento de Perto</h1><p>Ajustes semanais no seu plano, online ou presencial.</p></div>
-            <button id="c-prev" class="c-btn" aria-label="Slide anterior">❮</button>
-            <button id="c-next" class="c-btn" aria-label="Próximo slide">❯</button>
-            <div id="c-dots" class="dots"></div>
-        </header>
+        <!-- menu com as abas -->
+        <ul class="menu">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#dicas">Dicas</a></li>
+            <li><a href="#imc">Calculadora IMC</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
 
-        <main id="main" class="container">
-            <section class="section stats" aria-label="Resultados">
-                <div><strong>+<span class="counter" data-target="2500">0</span></strong><span>pacientes atendidos</span></div>
-                <div><strong><span class="counter" data-target="12">0</span></strong><span>anos de experiência</span></div>
-                <div><strong><span class="counter" data-target="98">0</span>%</strong><span>de satisfação</span></div>
-            </section>
+        <main id="main">
 
-            <section class="section">
-                <h2 class="section-title">O que oferecemos</h2>
-                <div id="cards" class="grid-cards">
-                    <div class="card explain">
-                        <h3>Reeducação Alimentar</h3>
-                        <p>Aprenda a comer de tudo, na medida certa, sem sofrimento e com muita saúde.</p>
-                    </div>
-                    <div class="card explain">
-                        <h3>Nutrição Esportiva</h3>
-                        <p>Planos focados em hipertrofia, rendimento e recuperação muscular.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">🥗</div>
-                        <h3>Receitas Saudáveis</h3>
-                        <p>Acesso exclusivo ao nosso e-book com receitas práticas para a semana.</p>
-                    </div>
-                    <div class="card explain">
-                        <h3>⚖️ Emagrecimento Saudável</h3>
-                        <p>Perda de peso gradual, sem efeito sanfona e com acompanhamento real.</p>
-                    </div>
-                    <div class="card explain">
-                        <h3>🩺 Nutrição Clínica</h3>
-                        <p>Cuidado alimentar para diabetes, colesterol, hipertensão e outras condições.</p>
-                    </div>
-                    <div class="card explain">
-                        <h3>💬 Acompanhamento Online</h3>
-                        <p>Consultas por vídeo e suporte direto para tirar dúvidas no dia a dia.</p>
-                    </div>
+            <!-- PAGINA: INICIO -->
+            <section class="page" id="pg-inicio">
+                <header class="hero-carousel" aria-label="Destaques">
+                    <div class="slide active"><h1>Transforme seu Corpo e Mente</h1><p>Consultorias 100% Personalizadas</p></div>
+                    <div class="slide"><h1>Nutrição com Ciência</h1><p>Sem dietas malucas, resultados reais.</p></div>
+                    <div class="slide"><h1>Acompanhamento de Perto</h1><p>Ajustes semanais no seu plano, online ou presencial.</p></div>
+                    <button id="c-prev" class="c-btn" aria-label="Slide anterior">❮</button>
+                    <button id="c-next" class="c-btn" aria-label="Próximo slide">❯</button>
+                    <div id="c-dots" class="dots"></div>
+                </header>
+                <div class="container">
+                    <section class="section stats" aria-label="Resultados">
+                        <div><strong>+<span class="counter" data-target="2500">0</span></strong><span>pacientes atendidos</span></div>
+                        <div><strong><span class="counter" data-target="12">0</span></strong><span>anos de experiência</span></div>
+                        <div><strong><span class="counter" data-target="98">0</span>%</strong><span>de satisfação</span></div>
+                    </section>
+                    <section class="section">
+                        <h2 class="section-title">Por onde começar?</h2>
+                        <div class="grid-cards">
+                            <div class="card explain" data-servico="reeducacao" tabindex="0"><h3>Quero comer melhor</h3><p>Conheça a reeducação alimentar.</p><span class="mais">Saiba mais →</span></div>
+                            <div class="card explain" data-servico="esportiva" tabindex="0"><h3>Quero treinar melhor</h3><p>Veja como funciona a nutrição esportiva.</p><span class="mais">Saiba mais →</span></div>
+                            <div class="card explain" data-servico="receitas" tabindex="0"><h3>Quero ideias de receitas</h3><p>Receitas práticas para a semana.</p><span class="mais">Saiba mais →</span></div>
+                        </div>
+                    </section>
                 </div>
-                <p id="no-results" class="feedback-msg">Nenhum serviço encontrado. Tente outra palavra, como "dieta" ou "treino".</p>
             </section>
 
-            <section class="section contact-section">
-                <h2 class="section-title">Fale Conosco</h2>
-                <form id="contact-form" class="modern-form">
-                    <div class="input-group">
-                        <input id="c-name" type="text" required minlength="3">
-                        <label for="c-name">Nome Completo</label>
+            <!-- PAGINA: SERVICOS -->
+            <section class="page" id="pg-servicos" hidden>
+                <div class="container">
+                    <h2 class="section-title">O que oferecemos</h2>
+                    <div id="cards" class="grid-cards">
+                        <div class="card explain" data-servico="reeducacao" tabindex="0">
+                            <h3>Reeducação Alimentar</h3>
+                            <p>Aprenda a comer de tudo, na medida certa, sem sofrimento e com muita saúde.</p>
+                            <span class="mais">Saiba mais →</span>
+                        </div>
+                        <div class="card explain" data-servico="esportiva" tabindex="0">
+                            <h3>Nutrição Esportiva</h3>
+                            <p>Planos focados em hipertrofia, rendimento e recuperação muscular.</p>
+                            <span class="mais">Saiba mais →</span>
+                        </div>
+                        <div class="card" data-servico="receitas" tabindex="0">
+                            <div class="card-img">🥗</div>
+                            <h3>Receitas Saudáveis</h3>
+                            <p>Acesso exclusivo ao nosso e-book com receitas práticas para a semana.</p>
+                            <span class="mais">Saiba mais →</span>
+                        </div>
+                        <div class="card explain" data-servico="emagrecimento" tabindex="0">
+                            <h3>⚖️ Emagrecimento Saudável</h3>
+                            <p>Perda de peso gradual, sem efeito sanfona e com acompanhamento real.</p>
+                            <span class="mais">Saiba mais →</span>
+                        </div>
+                        <div class="card explain" data-servico="clinica" tabindex="0">
+                            <h3>🩺 Nutrição Clínica</h3>
+                            <p>Cuidado alimentar para diabetes, colesterol, hipertensão e outras condições.</p>
+                            <span class="mais">Saiba mais →</span>
+                        </div>
+                        <div class="card explain" data-servico="online" tabindex="0">
+                            <h3>💬 Acompanhamento Online</h3>
+                            <p>Consultas por vídeo e suporte direto para tirar dúvidas no dia a dia.</p>
+                            <span class="mais">Saiba mais →</span>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <input id="c-email" type="email" required>
-                        <label for="c-email">E-mail Válido</label>
+                    <p id="no-results" class="feedback-msg">Nenhum serviço encontrado. Tente outra palavra, como "dieta" ou "treino".</p>
+                </div>
+            </section>
+
+            <!-- PAGINA: DETALHE DO SERVICO (preenchida pelo JS) -->
+            <section class="page" id="pg-servico" hidden>
+                <div class="container texto" id="servico-conteudo"></div>
+            </section>
+
+            <!-- PAGINA: DICAS -->
+            <section class="page" id="pg-dicas" hidden>
+                <div class="container texto">
+                    <h2 class="section-title">Dicas de Saúde</h2>
+                    <details open><summary>💧 Quanto de água devo beber?</summary><p>Uma regra comum é 35 ml por kg de peso, mas isso muda com o clima e a atividade física. Beba aos poucos ao longo do dia e preste atenção na cor da urina: clara é bom sinal.</p></details>
+                    <details><summary>🍳 Pular o café da manhã faz mal?</summary><p>Não existe resposta única. O importante é a qualidade do que você come no dia todo. Se você sente fome cedo, um café da manhã com proteína e fibras ajuda a segurar até o almoço.</p></details>
+                    <details><summary>🛒 Como montar uma lista de compras saudável?</summary><p>Priorize alimentos frescos nas bordas do mercado: frutas, verduras, ovos, carnes e grãos. Leia o rótulo e desconfie de produtos com lista de ingredientes muito longa.</p></details>
+                    <details><summary>😴 Dormir mal atrapalha a dieta?</summary><p>Sim. Dormir pouco aumenta a fome e a vontade de comer doces. Tente dormir de 7 a 9 horas e evitar refeições muito pesadas perto da hora de deitar.</p></details>
+                </div>
+            </section>
+
+            <!-- PAGINA: IMC -->
+            <section class="page" id="pg-imc" hidden>
+                <div class="container texto">
+                    <h2 class="section-title">Calculadora de IMC</h2>
+                    <p class="intro">IMC = peso ÷ (altura × altura). Preencha os campos abaixo para calcular.</p>
+                    <form id="imc-form" class="modern-form">
+                        <div class="input-group">
+                            <input id="imc-peso" type="number" step="0.1" min="20" max="400" required>
+                            <label for="imc-peso">Peso (kg)</label>
+                        </div>
+                        <div class="input-group">
+                            <input id="imc-altura" type="number" min="100" max="250" required>
+                            <label for="imc-altura">Altura (cm)</label>
+                        </div>
+                        <button type="submit" class="btn primary w-100">Calcular</button>
+                    </form>
+                    <p id="imc-res" class="imc-res" role="status"></p>
+                    <p class="auth-note">O IMC é só uma referência e não substitui a avaliação de um nutricionista.</p>
+                </div>
+            </section>
+
+            <!-- PAGINA: SOBRE -->
+            <section class="page" id="pg-sobre" hidden>
+                <div class="container texto">
+                    <h2 class="section-title">Sobre a NutriPro</h2>
+                    <p class="intro">A NutriPro nasceu com a ideia de que comer bem não precisa ser complicado. Nossa equipe junta ciência e conversa de verdade com o paciente para montar planos que cabem na rotina de cada um.</p>
+                    <div class="grid-cards">
+                        <div class="card"><h3>🎯 Missão</h3><p>Ajudar as pessoas a criarem hábitos saudáveis que durem a vida toda.</p></div>
+                        <div class="card"><h3>🔬 Método</h3><p>Avaliação completa, plano individual e ajustes toda semana.</p></div>
+                        <div class="card"><h3>🤝 Valores</h3><p>Respeito, ciência e acolhimento, sem julgamentos.</p></div>
                     </div>
-                    <button type="submit" class="btn primary w-100">Agendar Avaliação</button>
-                </form>
+                    <p class="auth-note">Projeto fictício feito para fins acadêmicos.</p>
+                </div>
+            </section>
+
+            <!-- PAGINA: CONTATO -->
+            <section class="page" id="pg-contato" hidden>
+                <div class="container texto">
+                    <h2 class="section-title">Fale Conosco</h2>
+                    <form id="contact-form" class="modern-form">
+                        <div class="input-group">
+                            <input id="c-name" type="text" required minlength="3">
+                            <label for="c-name">Nome Completo</label>
+                        </div>
+                        <div class="input-group">
+                            <input id="c-email" type="email" required>
+                            <label for="c-email">E-mail Válido</label>
+                        </div>
+                        <button type="submit" class="btn primary w-100">Agendar Avaliação</button>
+                    </form>
+                    <h3 class="faq-titulo">Perguntas frequentes</h3>
+                    <details><summary>Como funciona a primeira consulta?</summary><p>Conversamos sobre sua rotina, objetivos e histórico de saúde, e fazemos a avaliação corporal.</p></details>
+                    <details><summary>Preciso de exames antes?</summary><p>Se você tiver exames recentes, traga. Se não tiver, podemos orientar quais fazer.</p></details>
+                    <details><summary>Posso fazer tudo online?</summary><p>Sim, o acompanhamento por vídeo tem o mesmo plano do presencial.</p></details>
+                    <p class="auth-note">Contato (fictício): contato@nutripro.exemplo | Seg a Sex, 8h às 18h</p>
+                </div>
             </section>
         </main>
 

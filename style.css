@@ -164,3 +164,30 @@ footer { text-align: center; padding: 2rem; background: var(--surface); border-t
 @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ===== PAGINAS (abas, detalhes, IMC) ===== */
+/* estilos novos: menu, paginas e detalhes (usa as variaveis do style.css) */
+.menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; list-style: none; padding: 0.6rem 5%; background: var(--surface); border-bottom: 1px solid var(--border); }
+.menu a { display: block; padding: 0.5rem 1rem; border-radius: 8px; color: var(--text); text-decoration: none; font-weight: 600; transition: 0.3s; }
+.menu a:hover { background: var(--border); }
+.menu a.active { background: var(--primary); color: white; }
+
+a.btn { display: inline-block; text-decoration: none; }
+.card[data-servico] { cursor: pointer; }
+.mais { display: inline-block; margin-top: 0.8rem; color: var(--primary); font-weight: 600; }
+
+.texto { max-width: 800px; }
+.texto h3 { margin: 1.5rem 0 0.8rem; }
+.intro { text-align: center; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.6; }
+.lista, .lista-num { padding-left: 1.5rem; line-height: 1.8; }
+.lista { list-style: none; padding-left: 0; }
+.lista li::before { content: "✔ "; color: var(--primary); }
+.dica { background: var(--surface); border-left: 4px solid var(--primary); padding: 1rem; border-radius: 8px; margin: 1.5rem 0; }
+.cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+
+details { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1rem; }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin-top: 0.8rem; line-height: 1.6; color: var(--text-light); }
+.faq-titulo { text-align: center; margin-top: 3rem !important; }
+
+.imc-res { text-align: center; font-size: 1.3rem; font-weight: 600; color: var(--primary); margin: 1.5rem 0 0.5rem; min-height: 2rem; }

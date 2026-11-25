@@ -214,3 +214,122 @@ document.getElementById('btn-logout').onclick = () => {
 
 const activeSession = getSession();
 activeSession ? showApp(activeSession, false) : showAuth();
+
+
+/* ===== PAGINAS (abas, servicos, IMC) ===== */
+// ---------- dados dos servicos (cada um vira uma pagina) ----------
+const servicos = {
+    reeducacao: {
+        icone: '🍽️', titulo: 'Reeducação Alimentar',
+        intro: 'Aqui ninguém precisa cortar tudo o que gosta. A ideia é aprender a montar pratos equilibrados e criar hábitos que você consegue manter.',
+        itens: ['Avaliação do seu jeito de comer hoje', 'Plano alimentar flexível, com trocas', 'Orientação para comer fora de casa', 'Lista de compras personalizada'],
+        passos: ['Consulta inicial e conversa sobre a rotina', 'Montagem do plano com você', 'Retorno a cada 15 dias para ajustes'],
+        dica: 'Mudar um hábito por vez funciona melhor do que mudar tudo de uma vez.'
+    },
+    esportiva: {
+        icone: '🏋️', titulo: 'Nutrição Esportiva',
+        intro: 'Para quem treina e quer render mais. O plano é feito de acordo com o tipo de treino, o horário e o objetivo: ganhar massa, melhorar o desempenho ou recuperar mais rápido.',
+        itens: ['Cálculo de calorias e proteínas para o seu treino', 'O que comer antes, durante e depois do exercício', 'Orientação sobre suplementos, só quando for necessário', 'Estratégias de hidratação'],
+        passos: ['Avaliação corporal e do treino', 'Plano separado para dias de treino e de descanso', 'Acompanhamento da evolução a cada mês'],
+        dica: 'Comer bem depois do treino ajuda a recuperar os músculos, mas o total do dia importa mais do que a hora exata.'
+    },
+    receitas: {
+        icone: '🥗', titulo: 'Receitas Saudáveis',
+        intro: 'Nosso e-book tem receitas rápidas para a semana toda, usando ingredientes fáceis de achar. Veja alguns exemplos:',
+        itens: ['Omelete de forno com legumes (20 min)', 'Frango desfiado com purê de abóbora', 'Panqueca de banana e aveia', 'Salada de grão-de-bico com limão'],
+        passos: ['Escolha as receitas da semana', 'Faça as compras pela lista do e-book', 'Prepare as marmitas em um dia só'],
+        dica: 'Cozinhar em maior quantidade e congelar economiza tempo e evita pedir comida por impulso.'
+    },
+    emagrecimento: {
+        icone: '⚖️', titulo: 'Emagrecimento Saudável',
+        intro: 'Perder peso aos poucos, sem passar fome e sem efeito sanfona. O foco é a gordura, preservando a massa muscular.',
+        itens: ['Meta realista de perda por mês', 'Plano sem alimentos proibidos', 'Controle de ansiedade alimentar', 'Acompanhamento de medidas, não só da balança'],
+        passos: ['Avaliação e definição da meta', 'Plano com déficit calórico leve', 'Revisão semanal das medidas'],
+        dica: 'A balança oscila no dia a dia. Olhe a tendência de várias semanas.'
+    },
+    clinica: {
+        icone: '🩺', titulo: 'Nutrição Clínica',
+        intro: 'Atendimento para quem precisa cuidar de uma condição de saúde por meio da alimentação, sempre em conjunto com o médico.',
+        itens: ['Diabetes e resistência à insulina', 'Colesterol e triglicerídeos altos', 'Hipertensão', 'Intolerâncias e alergias alimentares'],
+        passos: ['Análise dos seus exames', 'Plano adaptado à sua condição', 'Reavaliação dos exames a cada 3 meses'],
+        dica: 'Leve sempre seus exames mais recentes na consulta.'
+    },
+    online: {
+        icone: '💬', titulo: 'Acompanhamento Online',
+        intro: 'Consulta por vídeo e suporte direto, para quem tem a agenda cheia ou mora longe.',
+        itens: ['Consultas por videochamada', 'Envio de fotos das refeições para feedback', 'Plano atualizado todo mês', 'Suporte para tirar dúvidas durante a semana'],
+        passos: ['Agende pelo formulário de contato', 'Faça o primeiro atendimento por vídeo', 'Receba o plano e comece'],
+        dica: 'Tenha uma balança e uma fita métrica em casa para facilitar o acompanhamento.'
+    }
+};
+
+// ---------- troca de paginas ----------
+const paginas = ['inicio', 'servicos', 'dicas', 'imc', 'sobre', 'contato'];
+
+function mostrarServico(chave) {
+    const s = servicos[chave];
+    if (!s) return false;
+    const itens = s.itens.map(i => '<li>' + i + '</li>').join('');
+    const passos = s.passos.map(p => '<li>' + p + '</li>').join('');
+    document.getElementById('servico-conteudo').innerHTML =
+        '<h2 class="section-title">' + s.icone + ' ' + s.titulo + '</h2>' +
+        '<p class="intro">' + s.intro + '</p>' +
+        '<h3>O que você encontra</h3><ul class="lista">' + itens + '</ul>' +
+        '<h3>Como funciona</h3><ol class="lista-num">' + passos + '</ol>' +
+        '<p class="dica">💡 ' + s.dica + '</p>' +
+        '<div class="cta"><a class="btn primary" href="#contato">Agendar avaliação</a><a class="btn" href="#servicos">← Voltar aos serviços</a></div>';
+    return true;
+}
+
+function trocarPagina() {
+    let hash = location.hash.slice(1) || 'inicio';
+    let pagina = hash;
+
+    if (hash.indexOf('servico-') === 0) {
+        if (mostrarServico(hash.slice(8))) pagina = 'servico';
+        else pagina = 'servicos';
+    } else if (!paginas.includes(hash)) {
+        pagina = 'inicio';
+    }
+
+    document.querySelectorAll('.page').forEach(p => { p.hidden = p.id !== 'pg-' + pagina; });
+    const abaAtiva = pagina === 'servico' ? 'servicos' : pagina;
+    document.querySelectorAll('.menu a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + abaAtiva);
+    });
+    window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', trocarPagina);
+trocarPagina();
+
+// ---------- clique nos cards (tambem com Enter) ----------
+function abrirCard(card) {
+    location.hash = 'servico-' + card.dataset.servico;
+}
+document.addEventListener('click', (e) => {
+    const card = e.target.closest('.card[data-servico]');
+    if (card) abrirCard(card);
+});
+document.addEventListener('keydown', (e) => {
+    const card = e.target.closest ? e.target.closest('.card[data-servico]') : null;
+    if (card && e.key === 'Enter') abrirCard(card);
+});
+
+// se pesquisar em outra aba, volta para os servicos
+document.getElementById('search').addEventListener('input', (e) => {
+    if (e.target.value.trim() && location.hash !== '#servicos') location.hash = 'servicos';
+});
+
+// ---------- calculadora de IMC ----------
+document.getElementById('imc-form').onsubmit = (e) => {
+    e.preventDefault();
+    const peso = parseFloat(document.getElementById('imc-peso').value);
+    const altura = parseFloat(document.getElementById('imc-altura').value) / 100;
+    const imc = peso / (altura * altura);
+    let faixa;
+    if (imc < 18.5) faixa = 'Abaixo do peso';
+    else if (imc < 25) faixa = 'Peso normal';
+    else if (imc < 30) faixa = 'Sobrepeso';
+    else faixa = 'Obesidade';
+    document.getElementById('imc-res').textContent = 'Seu IMC é ' + imc.toFixed(1) + ' (' + faixa + ')';
+};
